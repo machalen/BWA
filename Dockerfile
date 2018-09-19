@@ -3,7 +3,7 @@
 # Based on Ubuntu
 ############################################################
 #Build the image based on Ubuntu
-FROM ubuntu:16.04
+FROM ubuntu:latest
 
 #Maintainer and author
 MAINTAINER Magdalena Arnal <marnal@imim.es>
