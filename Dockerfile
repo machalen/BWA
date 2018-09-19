@@ -13,8 +13,14 @@ RUN apt-get update
 RUN apt-get install --yes build-essential gcc-multilib apt-utils zlib1g-dev wget git
 
 #Install BWA
-WORKDIR /usr/local/
+WORKDIR /usr/local
 RUN git clone https://github.com/lh3/bwa.git
-WORKDIR /tmp/bwa
+WORKDIR /usr/local/bwa
 RUN git checkout v0.7.17
 RUN make
+ENV PATH /usr/local/bwa:$PATH
+
+#Clean and set workingdir
+RUN apt-get clean
+RUN apt-get remove --yes --purge build-essential gcc-multilib apt-utils zlib1g-dev wget
+WORKDIR /
